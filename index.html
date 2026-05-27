@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shwetansh Sahu — VFX & Animation Artist | AAFT 2025 | India" />
+  <title>Shwetansh Sahu — VFX & Animation Artist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080808; --surface: #0f0f0f; --card: #141414;
+      --border: rgba(255,255,255,0.07); --gold: #c9a84c; --gold-dim: #7a5f28;
+      --white: #f0ece4; --muted: #7a7670; --accent: #e8c96a;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--white); font-family: 'DM Mono', monospace; font-weight: 300; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.45;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(8,8,8,0.88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      animation: fadeDown 0.8s ease both;
+    }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* HERO */
+    #home { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 10rem 4rem 5rem; position: relative; overflow: hidden; border-top: none; }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(201,168,76,0.07) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.03) 0%, transparent 60%);
+    }
+    .hero-tag { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; animation: fadeUp 0.9s 0.2s ease both; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 8vw, 8rem); font-weight: 300; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 2rem; animation: fadeUp 0.9s 0.4s ease both; }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-desc { max-width: 520px; font-size: 0.82rem; line-height: 1.9; color: var(--muted); margin-bottom: 3rem; animation: fadeUp 0.9s 0.6s ease both; }
+    .hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; animation: fadeUp 0.9s 0.8s ease both; }
+    .btn { display: inline-block; padding: 0.75rem 2rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: all 0.3s; border: 1px solid transparent; }
+    .btn-primary { background: var(--gold); color: #080808; }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-outline { border-color: var(--border); color: var(--muted); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-socials { display: flex; gap: 1.2rem; margin-top: 3rem; animation: fadeUp 0.9s 1s ease both; }
+    .hero-socials a { width: 38px; height: 38px; border: 1px solid var(--border); display: grid; place-items: center; color: var(--muted); text-decoration: none; font-size: 1rem; transition: all 0.3s; }
+    .hero-socials a:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-stats { position: absolute; right: 4rem; bottom: 5rem; display: flex; gap: 3rem; animation: fadeUp 0.9s 1.1s ease both; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--gold); line-height: 1; }
+    .stat-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
+
+    /* SECTIONS */
+    section { padding: 7rem 4rem; border-top: 1px solid var(--border); }
+    .section-tag { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 300; letter-spacing: -0.01em; margin-bottom: 3.5rem; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p { font-size: 0.83rem; line-height: 2; color: var(--muted); margin-bottom: 1.5rem; }
+    .about-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    .detail-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 0.3rem; }
+    .detail-value { font-size: 0.8rem; color: var(--white); }
+    .about-badge { width: 320px; height: 320px; border: 1px solid var(--border); position: relative; display: grid; place-items: center; }
+    .about-badge::before { content: ''; position: absolute; inset: 12px; border: 1px solid var(--border); }
+    .about-badge::after { content: ''; position: absolute; top: -1px; left: 40px; width: 60px; height: 1px; background: var(--gold); }
+    .badge-line-b { position: absolute; bottom: -1px; right: 40px; width: 60px; height: 1px; background: var(--gold); }
+    .badge-initials { font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: var(--gold); opacity: 0.12; font-style: italic; user-select: none; }
+
+    /* TIMELINE */
+    .timeline { max-width: 700px; }
+    .tl-item { display: grid; grid-template-columns: 120px 1fr; gap: 2rem; margin-bottom: 3rem; position: relative; }
+    .tl-item::before { content: ''; position: absolute; left: 119px; top: 8px; bottom: -3rem; width: 1px; background: var(--border); }
+    .tl-item:last-child::before { display: none; }
+    .tl-year { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--gold); letter-spacing: 0.1em; padding-top: 2px; }
+    .tl-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); position: absolute; left: 116px; top: 8px; }
+    .tl-body h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .tl-body p { font-size: 0.78rem; line-height: 1.85; color: var(--muted); }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .skills-col h4 { font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+    .skill-bar { margin-bottom: 1.6rem; }
+    .skill-header { display: flex; justify-content: space-between; font-size: 0.76rem; color: var(--white); margin-bottom: 0.55rem; }
+    .skill-pct { color: var(--gold); }
+    .bar-track { height: 2px; background: rgba(255,255,255,0.06); position: relative; overflow: hidden; }
+    .bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dim), var(--gold)); width: 0; transition: width 1.4s cubic-bezier(0.4,0,0.2,1); }
+    .tool-item { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    .tool-name { font-size: 0.78rem; }
+    .tool-bar-wrap { width: 40%; }
+    .tool-pct { font-size: 0.7rem; color: var(--gold); width: 36px; text-align: right; }
+
+    /* PORTFOLIO */
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .port-card { background: var(--card); border: 1px solid var(--border); overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
+    .port-card:hover { border-color: var(--gold-dim); transform: translateY(-4px); }
+    .port-video { aspect-ratio: 16/9; width: 100%; }
+    .port-video iframe { width: 100%; height: 100%; border: none; display: block; }
+    .port-info { padding: 1rem 1.2rem; }
+    .port-cat { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem; }
+    .port-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; }
+    .shorts-label { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin: 3rem 0 1.5rem; display: flex; align-items: center; gap: 1rem; }
+    .shorts-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .shorts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .shorts-grid .port-video { aspect-ratio: 9/16; }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .contact-intro p { font-size: 0.83rem; line-height: 2; color: var(--muted); margin-bottom: 2.5rem; }
+    .contact-socials { display: flex; gap: 1rem; }
+    .contact-socials a { width: 42px; height: 42px; border: 1px solid var(--border); display: grid; place-items: center; color: var(--muted); text-decoration: none; font-size: 1.1rem; transition: all 0.3s; }
+    .contact-socials a:hover { border-color: var(--gold); color: var(--gold); }
+    .contact-details { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 0.3rem; }
+    .contact-value { font-size: 0.82rem; color: var(--white); }
+    .contact-value a { color: inherit; text-decoration: none; }
+    .contact-value a:hover { color: var(--gold); }
+
+    /* FOOTER */
+    footer { padding: 3rem 4rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.15em; color: var(--gold); }
+    .footer-sub { font-size: 0.68rem; color: var(--muted); margin-top: 0.2rem; }
+    .footer-copy { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; }
+    .footer-copy span { color: var(--gold); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 5rem 1.5rem; }
+      #home { padding: 8rem 1.5rem 5rem; }
+      .hero-stats { position: static; margin-top: 3rem; }
+      .about-grid, .skills-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .shorts-grid { grid-template-columns: repeat(2, 1fr); }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#home">Shwetansh Sahu</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#timeline">Journey</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">VFX &amp; Animation Artist</div>
+  <h1 class="hero-title">Hi, I'm<br /><em>Shwetansh Sahu</em></h1>
+  <p class="hero-desc">A passionate VFX &amp; Animation student at AAFT (2025), dedicated to creating immersive visual experiences through cinematic design, motion graphics, and visual storytelling.</p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#portfolio">View Portfolio</a>
+    <a class="btn btn-outline" href="#contact">Contact Me</a>
+  </div>
+  <div class="hero-socials">
+    <a href="https://www.instagram.com/shwetansh_09?igsh=MXg0OXJtYWMyemtsbw==" target="_blank" title="Instagram">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a href="https://youtube.com/@shwetanshsahu09?si=9mqg3RwJHzogPhth" target="_blank" title="YouTube">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+    <a href="https://www.behance.net/shwetansh1" target="_blank" title="Behance">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.715-3.89c-.243-1.662-1.546-2.065-2.532-2.065-1.126 0-2.276.546-2.587 2.065h5.119zm-9.571-5.48H0v11.37h6.891c3.052 0 4.951-1.669 4.951-4.229 0-1.97-1.155-3.261-2.761-3.567 1.157-.417 1.977-1.406 1.977-2.898 0-2.366-1.629-3.676-4.618-3.676zm-4.728 4.403h4.225c.979 0 1.685.488 1.685 1.559 0 1.059-.706 1.633-1.708 1.633H1.712v-3.192zm0 5.234h4.322c1.249 0 2.063.561 2.063 1.85 0 1.214-.814 1.812-2.063 1.812H1.712v-3.662z"/></svg>
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-num">3+</div><div class="stat-label">Years Learning</div></div>
+    <div class="stat-item"><div class="stat-num">10+</div><div class="stat-label">Projects</div></div>
+    <div class="stat-item"><div class="stat-num">6+</div><div class="stat-label">Tools Mastered</div></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-tag reveal">My Story</div>
+  <h2 class="section-title reveal">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm Shwetansh Sahu, a dedicated VFX &amp; Animation student at AAFT (Asian Academy of Film &amp; Television), graduating in 2025. My journey in the world of visual effects and animation has been driven by a deep passion for storytelling through imagery.</p>
+      <p>From crafting intricate motion graphics to building immersive 3D environments, I merge technical precision with artistic intuition. Every frame I create is a step toward a cinematic universe shaped by imagination and emotion.</p>
+      <div class="about-details">
+        <div><div class="detail-label">Name</div><div class="detail-value">Shwetansh Sahu</div></div>
+        <div><div class="detail-label">Education</div><div class="detail-value">VFX &amp; Animation — AAFT (2025)</div></div>
+        <div><div class="detail-label">Location</div><div class="detail-value">India 🇮🇳</div></div>
+        <div><div class="detail-label">Phone</div><div class="detail-value">+91 7754835448</div></div>
+      </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="section-tag reveal">How It Started</div>
+  <h2 class="section-title reveal">Creative Journey</h2>
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-year">2022</div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <h4>Discovered Passion for Visual Arts</h4>
+        <p>Started experimenting with Adobe After Effects and Blender, creating short animated sequences and motion graphics projects that sparked a lifelong creative obsession.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2026—<br/>Present</div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <h4>VFX &amp; Animation Student — AAFT</h4>
+        <p>Mastering cinematic VFX, 3D animation, motion graphics and visual storytelling at one of India's premier film &amp; media institutions.</p>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-tag reveal">What I Do</div>
+  <h2 class="section-title reveal">Skills &amp; Expertise</h2>
+  <div class="skills-grid">
+    <div class="skills-col reveal">
+      <h4>Core Skills</h4>
+      <div class="skill-bar" data-pct="88">
+        <div class="skill-header"><span>VFX</span><span class="skill-pct">88%</span></div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+      </div>
+      <div class="skill-bar" data-pct="85">
+        <div class="skill-header"><span>Animation</span><span class="skill-pct">85%</span></div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+      </div>
+      <div class="skill-bar" data-pct="90">
+        <div class="skill-header"><span>Video Editing</span><span class="skill-pct">90%</span></div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+      </div>
+      <div class="skill-bar" data-pct="82">
+        <div class="skill-header"><span>Motion Graphics</span><span class="skill-pct">82%</span></div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+      </div>
+      <div class="skill-bar" data-pct="78">
+        <div class="skill-header"><span>Graphic Design</span><span class="skill-pct">78%</span></div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+      </div>
+      <div class="skill-bar" data-pct="80">
+        <div class="skill-header"><span>Storyboarding</span><span class="skill-pct">80%</span></div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+      </div>
+    </div>
+    <div class="skills-col reveal">
+      <h4>Software &amp; Tools</h4>
+      <div class="tool-item"><span class="tool-name">Adobe After Effects</span><div class="tool-bar-wrap bar-track"><div class="bar-fill" data-pct="92"></div></div><span class="tool-pct">92%</span></div>
+      <div class="tool-item"><span class="tool-name">Adobe Premiere Pro</span><div class="tool-bar-wrap bar-track"><div class="bar-fill" data-pct="89"></div></div><span class="tool-pct">89%</span></div>
+      <div class="tool-item"><span class="tool-name">Adobe Photoshop</span><div class="tool-bar-wrap bar-track"><div class="bar-fill" data-pct="84"></div></div><span class="tool-pct">84%</span></div>
+      <div class="tool-item"><span class="tool-name">Blender 3D</span><div class="tool-bar-wrap bar-track"><div class="bar-fill" data-pct="77"></div></div><span class="tool-pct">77%</span></div>
+      <div class="tool-item"><span class="tool-name">DaVinci Resolve</span><div class="tool-bar-wrap bar-track"><div class="bar-fill" data-pct="75"></div></div><span class="tool-pct">75%</span></div>
+      <div class="tool-item"><span class="tool-name">Adobe Illustrator</span><div class="tool-bar-wrap bar-track"><div class="bar-fill" data-pct="72"></div></div><span class="tool-pct">72%</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="section-tag reveal">Selected Work</div>
+  <h2 class="section-title reveal">Portfolio</h2>
+  <div class="portfolio-grid">
+    <div class="port-card reveal"><div class="port-video"><iframe src="https://www.youtube.com/embed/V0uSgZQZbqw" loading="lazy" allowfullscreen></iframe></div><div class="port-info"><div class="port-cat">Showreel</div><div class="port-title">Main Showreel 2024</div></div></div>
+    <div class="port-card reveal"><div class="port-video"><iframe src="https://www.youtube.com/embed/-NrsDr7GO84" loading="lazy" allowfullscreen></iframe></div><div class="port-info"><div class="port-cat">UI Design</div><div class="port-title">Motion UI Design</div></div></div>
+    <div class="port-card reveal"><div class="port-video"><iframe src="https://www.youtube.com/embed/48MrQ2J61Vg" loading="lazy" allowfullscreen></iframe></div><div class="port-info"><div class="port-cat">Infographics</div><div class="port-title">Animated Infographics</div></div></div>
+    <div class="port-card reveal"><div class="port-video"><iframe src="https://www.youtube.com/embed/XxVoXHk4EiM" loading="lazy" allowfullscreen></iframe></div><div class="port-info"><div class="port-cat">Text Animation</div><div class="port-title">Kinetic Typography</div></div></div>
+    <div class="port-card reveal"><div class="port-video"><iframe src="https://www.youtube.com/embed/oVAGWgDFdW8" loading="lazy" allowfullscreen></iframe></div><div class="port-info"><div class="port-cat">VFX</div><div class="port-title">Visual Effects Reel</div></div></div>
+    <div class="port-card reveal"><div class="port-video"><iframe src="https://www.youtube.com/embed/T_yKO6oLF4Y" loading="lazy" allowfullscreen></iframe></div><div class="port-info"><div class="port-cat">3D Animation</div><div class="port-title">3D Animation Project</div></div></div>
+  </div>
+  <div class="shorts-label reveal">YouTube Shorts</div>
+  <div class="shorts-grid">
+    <div class="port-card reveal"><div class="port-video"><iframe src="https://youtube.com/embed/iSeEc0Lk_ME" loading="lazy" allowfullscreen></iframe></div><div class="port-info"><div class="port-cat">Ad Film</div><div class="port-title">Coffee Advertisement</div></div></div>
+    <div class="port-card reveal"><div class="port-video"><iframe src="https://youtube.com/embed/bS7xFjdVDsc" loading="lazy" allowfullscreen></iframe></div><div class="port-info"><div class="port-cat">Ad Film</div><div class="port-title">Maggie Advertisement</div></div></div>
+    <div class="port-card reveal"><div class="port-video"><iframe src="https://youtube.com/embed/iD0ismX-UPg" loading="lazy" allowfullscreen></iframe></div><div class="port-info"><div class="port-cat">Ad Film</div><div class="port-title">Zomato Advertisement</div></div></div>
+    <div class="port-card reveal"><div class="port-video"><iframe src="https://youtube.com/embed/Nn6LLhRVbo0" loading="lazy" allowfullscreen></iframe></div><div class="port-info"><div class="port-cat">Ad Film</div><div class="port-title">Lays Advertisement</div></div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-tag reveal">Get In Touch</div>
+  <h2 class="section-title reveal">Let's Connect</h2>
+  <div class="contact-grid">
+    <div class="contact-intro reveal">
+      <p>Have a project in mind or want to collaborate? I'd love to hear from you. Let's create something amazing together.</p>
+      <div class="contact-socials">
+        <a href="https://www.instagram.com/shwetansh_09?igsh=MXg0OXJtYWMyemtsbw==" target="_blank">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://youtube.com/@shwetanshsahu09?si=9mqg3RwJHzogPhth" target="_blank">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="https://www.behance.net/shwetansh1" target="_blank">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.715-3.89c-.243-1.662-1.546-2.065-2.532-2.065-1.126 0-2.276.546-2.587 2.065h5.119zm-9.571-5.48H0v11.37h6.891c3.052 0 4.951-1.669 4.951-4.229 0-1.97-1.155-3.261-2.761-3.567 1.157-.417 1.977-1.406 1.977-2.898 0-2.366-1.629-3.676-4.618-3.676zm-4.728 4.403h4.225c.979 0 1.685.488 1.685 1.559 0 1.059-.706 1.633-1.708 1.633H1.712v-3.192zm0 5.234h4.322c1.249 0 2.063.561 2.063 1.85 0 1.214-.814 1.812-2.063 1.812H1.712v-3.662z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="contact-details reveal">
+      <div><div class="contact-label">Phone</div><div class="contact-value"><a href="tel:+917754835448">+91 7754835448</a></div></div>
+      <div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:shwetansh099@gmail.com">shwetansh099@gmail.com</a></div></div>
+      <div><div class="contact-label">Location</div><div class="contact-value">India 🇮🇳</div></div>
+      <div><div class="contact-label">College</div><div class="contact-value">AAFT, Graduating 2025</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">Shwetansh Sahu</div>
+    <div class="footer-sub">VFX &amp; Animation Artist | AAFT 2025 | India</div>
+  </div>
+  <div class="footer-copy">Crafted with <span>♥</span> and creativity &nbsp;•&nbsp; © 2026 All Rights Reserved</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  const barObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const pct = el.getAttribute('data-pct') || el.closest('[data-pct]')?.getAttribute('data-pct') || '0';
+        el.style.width = pct + '%';
+        barObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.skill-bar').forEach(b => {
+    const fill = b.querySelector('.bar-fill');
+    fill.setAttribute('data-pct', b.getAttribute('data-pct'));
+    barObs.observe(fill);
+  });
+  document.querySelectorAll('.tool-bar-wrap .bar-fill').forEach(f => barObs.observe(f));
+</script>
+</body>
+</html>
